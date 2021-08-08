@@ -1,12 +1,29 @@
 body {
-  margin: 0;
+  margin: 0 auto;
   padding: 0;
 }
 
-  main {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+main {
+  text-align: center;
+}
+
+.image {
+  margin-top: 70px;
+  width: 50%;
+  -webkit-animation:spin 30s linear infinite;
+  -moz-animation:spin 30s linear infinite;
+  animation:spin 30s linear infinite;
+}
+@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+
+h1 {
+  margin-top: 12px;
+}
+
+select {
+  display: inline;
 }
 
 .displayNone {
