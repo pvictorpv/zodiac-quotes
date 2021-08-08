@@ -1,25 +1,19 @@
-let form = document.querySelector("form");
+// BUILDING BLOCKS
 
-let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+const form = document.querySelector("fieldset");
 
-let monthForm = document.querySelector('#monthForm');
+const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 
-let dayForm = document.querySelector('#dayForm');
+function createAndAppendMonthSelector() {
 
-/* Creates a label with for="month", text "Select your month of birth: " and appends to the form tag */
-
-let labelMonthSelection = document.createElement("label");
-labelMonthSelection.htmlFor = "month";
-labelMonthSelection.innerHTML = "Select your month of birth:"
-monthForm.appendChild(labelMonthSelection);
-
-/* Creates a select tag with the id="month" */
-
-let monthSelection = document.createElement("select");
+const monthSelection = document.createElement("select");
 monthSelection.id = "month";
-monthForm.appendChild(monthSelection);
+form.appendChild(monthSelection);
 
-/* A for loop to generate a option list from the array "months" */
+const monthOption = document.createElement("option");
+monthOption.id = "monthLabel"
+monthOption.text = "Month";
+monthSelection.appendChild(monthOption);
 
 for (let i = 0; i < months.length; i++) {
   let option = document.createElement("option");
@@ -27,49 +21,61 @@ for (let i = 0; i < months.length; i++) {
   monthSelection.appendChild(option);
 };
 
-/* Creates a button with the id="submitMonthButton" and the text "Submit" */
+};
 
-let submitMonthButton = document.createElement("button");
-submitMonthButton.id = "submitMonthButton"
-submitMonthButton.innerHTML = "Submit"
-monthForm.appendChild(submitMonthButton);
+let daySelection;
 
-/* Adds a event listener to get the selected month by the user and saves at "selectedMonth" variable */
+function createAndAppendDaySelector() {
 
-const monthSubmit = document.querySelector("#submitMonthButton");
+daySelection = document.createElement("select");
+daySelection.id = "day";
+form.appendChild(daySelection);
+
+let dayOption = document.createElement("option");
+dayOption.text = "Day";
+daySelection.appendChild(dayOption);
+
+};
+
+function createAndAppendGenerateQuoteButton() {
+
+let generateButton = document.createElement("button");
+generateButton.id = "generateButton"
+generateButton.innerHTML = "Generate your quote"
+form.appendChild(generateButton);
+
+};
+
+function removeAllOptions(parent) {
+  while (parent.firstChild) {
+      parent.removeChild(parent.firstChild);
+  }
+}
+
+// EXECUTION
+
+createAndAppendMonthSelector();
+
+createAndAppendDaySelector();
+
+createAndAppendGenerateQuoteButton();
+
+// EVENT LISTENERS
+
 const monthList = document.querySelector("#month");
+
+let dayList = document.querySelector('#day');
+
+let monthDays;
 
 let selectedMonth;
 
 let selectedDay;
 
-monthSubmit.addEventListener('click', () => {
-  event.preventDefault();
+monthList.addEventListener('change', () => {
+  
   selectedMonth = monthList.options[monthList.selectedIndex].text;
-
-  monthForm.classList.toggle('displayNone');
-
-  let selectedMonthParagraph = document.createElement("p");
-  selectedMonthParagraph.innerHTML = `Selected month: ${selectedMonth}`
-  dayForm.appendChild(selectedMonthParagraph);
-
-  /* Creates a label with for="day", text "Select your day of birth: " and appends to the form tag */
-
-  let labelDaySelection = document.createElement("label");
-  labelDaySelection.htmlFor = "day";
-  labelDaySelection.innerHTML = "Select your day of birth:"
-  dayForm.appendChild(labelDaySelection);
-
-  /* Creates a select tag with the id="day" */
-
-  let daySelection = document.createElement("select");
-  daySelection.id = "day";
-  dayForm.appendChild(daySelection);
-
-  /* A for loop to generate a option list with equivalent days to the selected month */
-
-  let monthDays = 31;
-
+  
   if (selectedMonth == "April" 
     || selectedMonth == "June"
     || selectedMonth == "September"
@@ -80,55 +86,36 @@ monthSubmit.addEventListener('click', () => {
   } else if (selectedMonth == "February") {
 
       monthDays = 29;
-      
-  };
-
+    
+  } else {
+    
+    monthDays = 31;
+    
+  }
+  
+  removeAllOptions(dayList);
+  
   for (let i = 1; i <= monthDays; i++) {
     let option = document.createElement("option");
     option.text = i.toString();
     daySelection.appendChild(option);
   };
-
-  let submitButton = document.createElement("button");
-  submitButton.id = "submitButton"
-  submitButton.innerHTML = "Generate Quote"
-  dayForm.appendChild(submitButton);
-
-  const submit = document.querySelector("#submitButton");
-  const dayList = document.querySelector("#day");
-
-  submit.addEventListener('click', () => {
-    event.preventDefault();
-    selectedDay = dayList.options[dayList.selectedIndex].text;
   
-    dayForm.classList.toggle('displayNone');
-
-  });
-
 });
 
-/* Signs Quotes */
+const generateQuote = document.querySelector("#generateButton");
 
-let aquarius = [];
+generateQuote.addEventListener('click', () => {
+  event.preventDefault();
 
-let pisces = [];
+  if (selectedMonth == undefined 
+  || selectedMonth == "Month" ) {
+    return alert("Choose a valid month!");
+  };
 
-let aries = [];
+  selectedDay = dayList.options[dayList.selectedIndex].text;
+  alert(selectedMonth);
+  alert(selectedDay);
 
-let taurus = [];
-
-let gemini = [];
-
-let cancer = [];
-
-let leo = [];
-
-let virgo = [];
-
-let libra = [];
-
-let scorpio = [];
-
-let sagittarius = [];
-
-let capricorn = [];
+  form.classList.toggle('displayNone');
+});
