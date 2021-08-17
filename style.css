@@ -1,15 +1,16 @@
-body {
+html, body {
   margin: 0 auto;
   padding: 0;
+  align-items: center;
 }
 
-main {
+#main {
+  margin: 0 20px;
   text-align: center;
 }
 
 .image {
-  margin-top: 70px;
-  width: 50%;
+  min-width: 50%;
   -webkit-animation:spin 30s linear infinite;
   -moz-animation:spin 30s linear infinite;
   animation:spin 30s linear infinite;
@@ -18,11 +19,27 @@ main {
 @-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
 @keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
 
-h1 {
-  margin-top: 12px;
+#main h1, p {
+  margin: 7px 0;
+}
+
+a, a:hover {
+  text-decoration: none;
+  color: #1d1d1d;
+  text-align: center;
+}
+
+h2 {
+margin: 0;
+padding: 0;
+}
+
+button {
+  margin: 2px;
 }
 
 select {
+  margin: 2px;
   display: inline;
 }
 
@@ -30,6 +47,47 @@ select {
   display: none;
 }
 
+.displayFlex {
+  display: flex;
+}
+
 #day {
-  margin: 0 5px;
+  margin: 5px;
+}
+
+fieldset {
+  width: 60%;
+  margin: 0 auto;
+}
+
+#signName {
+  margin-top: 30%;
+  text-align: center;
+  text-transform: capitalize;
+}
+
+#quoteDiv {
+  margin: 0 auto;
+  height: 30vh;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 0;
+}
+
+#quote {
+  width: 100%;
+  background-color: hsla(46, 100%, 100%, 0.9);
+  display: block;
+  font-style: italic;
+  text-align: center;
+  padding: 0 10px;
+}
+
+#resultPage {
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+#homeButton {
+  margin-top: 12px;
 }
