@@ -67,7 +67,7 @@ fieldset {
 }
 
 #quoteDiv {
-  margin: 0 auto;
+  margin: 0;
   height: 30vh;
   align-items: center;
   justify-content: center;
@@ -84,10 +84,11 @@ fieldset {
 }
 
 #resultPage {
+  flex-direction: column;
   flex-wrap: wrap;
   justify-content: center;
 }
 
 #homeButton {
-  margin-top: 12px;
+  margin: 12px auto;
 }
