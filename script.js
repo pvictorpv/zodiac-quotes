@@ -184,7 +184,7 @@ generateQuote.addEventListener('click', () => {
   
   let resultPage = document.querySelector('#resultPage');
   resultPage.classList.remove('displayNone');
-  resultPage.classList.toggle('displayFlex');
+  resultPage.classList.add('displayFlex');
 
 });
 
