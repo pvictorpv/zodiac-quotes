@@ -22,10 +22,3 @@ Share with your friends, family, and everyone you know who likes astrology.
 Do you want to improve it? Clone or fork this repository and let me know about the upgrades.
 
 ## Create&<br>Code&<br>Deploy&<br>Share.
-  
-  
-  
-  
-  
-
-
